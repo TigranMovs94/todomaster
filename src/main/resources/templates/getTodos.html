@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
+<head>
+  <title>Todos</title>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+<h1>Todos</h1>
+  <hr />
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th> </th>
+    <th> Todo </th>
+    <th> Status </th>
+  </tr>
+
+  </thead>
+
+
+<tbody>
+       <tr th:each = "item: ${todoItems}">
+
+         <td>
+           <div class="btn btn-group-sm" role="group">
+
+             <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.getId()})}">
+               <i class="bi bi-pencil-fill"></i> Edit</a>
+
+             <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.getId()})}">
+               <i class="bi bi-trash-fill"></i> Delete</a>
+
+             <a class="btn btn-success" th:href="@{/editStatus/{id}(id=${item.getId()})}">
+               <i class="bi bi-pencil-fill"></i>Complete </a>
+
+             <a class="btn btn-warning" th:href="@{/incomplete/{id}(id=${item.getId()})}">
+               <i class="bi bi-pencil-fill"></i> Incomplete </a>
+           </div>
+         </td>
+
+         <td th:text="${item.getTitle()}">
+
+         </td>
+
+
+         <td>
+           <span th:if="${item.isCompleted()} == true " th:text="Completed" />
+           <span th:unless="${item.isCompleted()} == true " th:text="No" />
+
+         </td>
+       </tr>
+</tbody>
+  </table>
+
+  <p>
+
+    <a class="btn btn-outline-success" href="/add-todo">
+    <i class="bi bi-plus-square-fill"></i> Create a todo </a>
+
+    <a class="btn btn-outline-success" href="/">
+      <i class="bi bi-plus-square-fill"></i> <-Back </a>
+  </p>
+
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"></script>
+
+</body>
+</html>
