@@ -1,4 +1,4 @@
-package com.example.demo.Controllers;
+package com.example.demo.Controllers.Todo;
 
 import com.example.demo.models.Todo;
 import com.example.demo.services.TodoService;
